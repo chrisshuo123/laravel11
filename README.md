@@ -1,3 +1,17 @@
+# My Basic Laravel Learning Process
+### Part 1: Blade Templating Engine
+**Branch:** part1_bladeTemplatingEngine <br>
+I've learned the basic in understanding the Laravel's Route and the Blade's page inside the views
+### Part 2: Blade Component
+**Branch:** part2_bladeComponent <br>
+I've learned to implement component by using the php artisan make:component whether it requires class & views or views only _(without class)_, and how to use the components to organize navbar, navlink, header, and layout:<br>
+<br>
+**php artisan make:component Navbar**<br>
+**php artisan make:component Header --view**<br>
+**php artisan make:component Layout**<br>
+**php artisan make:component NavLink --view**<br>
+<br>
+***
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
 <p align="center">
