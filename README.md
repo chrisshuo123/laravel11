@@ -4,12 +4,26 @@
 I've learned the basic in understanding the Laravel's Route and the Blade's page inside the views
 ### Part 2: Blade Component
 **Branch:** part2_bladeComponent <br>
-I've learned to implement component by using the php artisan make:component whether it requires class & views or views only _(without class)_, and how to use the components to organize navbar, navlink, header, and layout:<br>
-<br>
-**php artisan make:component Navbar**<br>
-**php artisan make:component Header --view**<br>
-**php artisan make:component Layout**<br>
-**php artisan make:component NavLink --view**<br>
+I've learned to implement component by using the php artisan make:component whether it requires class & views or views only _(without class)_, and how to use the components to organize navbar, navlink, header, and layout.<br>
+At first, each pages in the resources/views/home.blade.php _(let's set home.blade.php page as an example)_, was in a single page format like normal PHP MVC does _in the 'Views' section_.  From here, there are 4 artisan make:components to implement:<br>
+<ol>
+    <li>
+        <b>php artisan make:component Navbar</b><br>
+        Learned to move the whole <nav> tag into this resources/views/components/navbar.blade.php page.  To show my Navbar on my home.blade.php page, '<x-navbar></x-navbar>' tag that recently the navbar located at.
+    </li>
+    <li>
+        <b>php artisan make:component Header --view</b><br>
+        Every web page contains 'header' after navbar on the most top page.  To manage header, I move the <header> tag from home.blade.php into the resources/views/components/header.blade.php page, while replacing the recent <header> tag position in home.blade.php with '<x-header></x-header>' tag.  To show the Header title according to the visited webpage, I change the Header name with '{{ $slot }}', that will be called via the 'routes' directory.
+    </li>
+    <li>
+        <b>php artisan make:component Layout</b><br>
+        To ease frustrations from HTML tags, I move the whole <html> and <!DOCTYPE html> tag from home.blade.php into this resources/views/components/layout.blade.php page.  For any contents inside the <body><main>...</main></body>, I give a {{ $slot }}, so any contents that needs to be filled, I filled them in the main 'home.blade.php' with <x-layout></x-layout> tag.
+    </li>
+    <li>
+        <b>php artisan make:component NavLink --view</b><br>
+        Every navbar requires button animations to notify the users in what page they're now on.  Whenever I'm in the home.blade.php, the 'Home' navbar button will be highlighted, and If the user moves to another page let's say on 'About Us' page, the 'About Us' navbar button will be highlighted (set to active), while non-activing the 'Home' navbar button.  The whole conditional operator and the tailwind are all moved to this resources/views/components/nav-link.blade.php page, from the resources/views/components/navbar.blade.php page, leaving the Navbar Button in the <x-nav-link></x-nav-link> only shows links. For simple navbar button routing.
+    </li>
+</ol>
 <br>
 ***
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
