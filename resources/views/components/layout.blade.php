@@ -9,7 +9,7 @@
     {{-- <script src="//unpkg.com/alpinejs" defer></script> --}}
     <title>{{ $title }}</title>
 </head>
-<body class="h-full bg-blue-300">
+<body class="h-full bg-gray-100">
     {{-- <a href="/">Home</a>
     <a href="/blog">Blog</a>
     <a href="/about">About</a>
