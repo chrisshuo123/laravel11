@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -14,16 +15,46 @@ Route::get('/about', function () {
 Route::get('/posts', function () {
     return view('posts', ['title' => 'Blog Page', 'posts' => [
         [
+            'id' => 1,
             'title' => 'Judul Artikel 1',
             'author' => 'Chris Shuo',
             'body' => 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Maiores est, voluptates, nam error quas beatae, odit eos voluptate veniam recusandae numquam atque quidem at sint repellat. Perspiciatis debitis quia ab.'
         ],
         [
+            'id' => 2,
             'title' => 'Judul Artikel 2',
-            'author' => 'Chris Shuo',
+            'author' => 'Suho Sou',
             'body' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem laudantium vero, repellat ipsam neque consequatur eveniet tenetur vitae sint ipsum quibusdam ex quod error! Maxime ipsum ex distinctio corporis officia.'
         ]
     ]]);
+});
+
+Route::get('posts/{id}', function($id) {
+    // dd($id);
+    $posts = [
+        [
+            'id' => 1,
+            'title' => 'Judul Artikel 1',
+            'author' => 'Chris Shuo',
+            'body' => 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Maiores est, voluptates, nam error quas beatae, odit eos voluptate veniam recusandae numquam atque quidem at sint repellat. Perspiciatis debitis quia ab.'
+        ],
+        [
+            'id' => 2,
+            'title' => 'Judul Artikel 2',
+            'author' => 'Suho Sou',
+            'body' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem laudantium vero, repellat ipsam neque consequatur eveniet tenetur vitae sint ipsum quibusdam ex quod error! Maxime ipsum ex distinctio corporis officia.'
+        ]
+    ];
+
+    // Ingat: Var yg ditulis didlm sebuah function itu hanya bisa dipakai didalam function itu
+    // Spy kita bisa gunakan, di PHP 8 bisa pakai use seperti dibawah ini. Dgn ini ia bisa ngecek globalnya
+    $post = Arr::first($posts, function($post) use ($id) {
+        return $post['id'] == $id;
+    });
+
+    return view('post', ['title' => 'Single Post', 'post' => $post]);
+
+    // dd($post);
 });
 
 Route::get('/contact', function () {
