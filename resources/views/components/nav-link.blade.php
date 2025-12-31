@@ -1,3 +1,5 @@
+@props(['active' => false])
+
 {{-- $attributes: Artinya, apapun yg ditulis didalam komponennya, itu akan di merge atau digabungkan kedalam componentnya, atau kedalam tag aslinya --}}
 {{-- $slot: Untuk judul per tombol navbarnya, dimasukkan kedalam $slot ini --}}
 
