@@ -8,17 +8,22 @@ Route::get('/', function () {
 
 
 Route::get('/about', function () {
-    return view('about', ['nama' => 'Chris Shuo'], ['title' => 'About Page']);
+    return view('about', ['nama' => 'Chris Shuo', 'title' => 'About Page']);
 });
 
-// TUGAS: Buat 2 rute baru
-// 1. /blog
-// 2 buah artikel, judul dan isi (isi cukup 2 kalimat saja)
-// 2. Contact
-// ada email / social media
-
-Route::get('/blog', function () {
-    return view('blog', ['title' => 'Blog Page']);
+Route::get('/posts', function () {
+    return view('posts', ['title' => 'Blog Page', 'posts' => [
+        [
+            'title' => 'Judul Artikel 1',
+            'author' => 'Chris Shuo',
+            'body' => 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Maiores est, voluptates, nam error quas beatae, odit eos voluptate veniam recusandae numquam atque quidem at sint repellat. Perspiciatis debitis quia ab.'
+        ],
+        [
+            'title' => 'Judul Artikel 2',
+            'author' => 'Chris Shuo',
+            'body' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem laudantium vero, repellat ipsam neque consequatur eveniet tenetur vitae sint ipsum quibusdam ex quod error! Maxime ipsum ex distinctio corporis officia.'
+        ]
+    ]]);
 });
 
 Route::get('/contact', function () {
