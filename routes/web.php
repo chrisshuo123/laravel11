@@ -12,6 +12,7 @@ Route::get('/about', function () {
     return view('about', ['nama' => 'Chris Shuo', 'title' => 'About Page']);
 });
 
+// Route Blog Posts, sekaligus mempelajari tentang penerapan "Wild Card"
 // Di halaman Blog Utama
 Route::get('/posts', function () {
     return view('posts', ['title' => 'Blog Page', 'posts' => [
