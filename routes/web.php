@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\Post;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -8,17 +10,24 @@ Route::get('/', function () {
 
 
 Route::get('/about', function () {
-    return view('about', ['nama' => 'Chris Shuo'], ['title' => 'About Page']);
+    return view('about', ['nama' => 'Chris Shuo', 'title' => 'About Page']);
 });
 
-// TUGAS: Buat 2 rute baru
-// 1. /blog
-// 2 buah artikel, judul dan isi (isi cukup 2 kalimat saja)
-// 2. Contact
-// ada email / social media
+// Route Blog Posts, sekaligus mempelajari tentang penerapan "Wild Card"
+// Di halaman Blog Utama
+// Pada branch 'part4_model', seluruh array posts dipindah ke dalam class Post dengan method all
+Route::get('/posts', function () {
+    return view('posts', ['title' => 'Blog Page', 'posts' => Post::all()]);
+});
 
-Route::get('/blog', function () {
-    return view('blog', ['title' => 'Blog Page']);
+// Di hal. Posts, pada hal. Blog kita pilih
+Route::get('posts/{slug}', function($slug) {
+    // Pada branch 'part4_model', param dgn $posts dirubah ke 'Post::all'. Panggil class dan methodnya.  var $post telah dipindah ke dalam Models\Post.php, karna hal2 yg berhubungan dgn ngerubah isi (kyk id jadi slug), harus dilakukan pada model scr prinsip.
+    $post = Post::find($slug);
+
+    return view('post', ['title' => 'Single Post', 'post' => $post]);
+
+    // dd($post);
 });
 
 Route::get('/contact', function () {
