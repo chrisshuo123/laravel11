@@ -1,5 +1,7 @@
 <?php
 
+
+use App\Models\Post;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Route;
 
@@ -14,50 +16,15 @@ Route::get('/about', function () {
 
 // Route Blog Posts, sekaligus mempelajari tentang penerapan "Wild Card"
 // Di halaman Blog Utama
+// Pada branch 'part4_model', seluruh array posts dipindah ke dalam class Post dengan method all
 Route::get('/posts', function () {
-    return view('posts', ['title' => 'Blog Page', 'posts' => [
-        [
-            'id' => 1,
-            'slug' => 'judul-artikel-1',
-            'title' => 'Judul Artikel 1',
-            'author' => 'Chris Shuo',
-            'body' => 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Maiores est, voluptates, nam error quas beatae, odit eos voluptate veniam recusandae numquam atque quidem at sint repellat. Perspiciatis debitis quia ab.'
-        ],
-        [
-            'id' => 2,
-            'slug' => 'judul-artikel-2',
-            'title' => 'Judul Artikel 2',
-            'author' => 'Suho Soull',
-            'body' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem laudantium vero, repellat ipsam neque consequatur eveniet tenetur vitae sint ipsum quibusdam ex quod error! Maxime ipsum ex distinctio corporis officia.'
-        ]
-    ]]);
+    return view('posts', ['title' => 'Blog Page', 'posts' => Post::all()]);
 });
 
 // Di hal. Posts, pada hal. Blog kita pilih
 Route::get('posts/{slug}', function($slug) {
-    // dd($id);
-    $posts = [
-        [
-            'id' => 1,
-            'slug' => 'judul-artikel-1',
-            'title' => 'Judul Artikel 1',
-            'author' => 'Chris Shuo',
-            'body' => 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Maiores est, voluptates, nam error quas beatae, odit eos voluptate veniam recusandae numquam atque quidem at sint repellat. Perspiciatis debitis quia ab.'
-        ],
-        [
-            'id' => 2,
-            'slug' => 'judul-artikel-2',
-            'title' => 'Judul Artikel 2',
-            'author' => 'Suho Sou',
-            'body' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem laudantium vero, repellat ipsam neque consequatur eveniet tenetur vitae sint ipsum quibusdam ex quod error! Maxime ipsum ex distinctio corporis officia.'
-        ]
-    ];
-
-    // Ingat: Var yg ditulis didlm sebuah function itu hanya bisa dipakai didalam function itu
-    // Spy kita bisa gunakan, di PHP 8 bisa pakai use seperti dibawah ini. Dgn ini ia bisa ngecek globalnya
-    $post = Arr::first($posts, function($post) use ($slug) {
-        return $post['slug'] == $slug;
-    });
+    // Pada branch 'part4_model', param dgn $posts dirubah ke 'Post::all'. Panggil class dan methodnya.  var $post telah dipindah ke dalam Models\Post.php, karna hal2 yg berhubungan dgn ngerubah isi (kyk id jadi slug), harus dilakukan pada model scr prinsip.
+    $post = Post::find($slug);
 
     return view('post', ['title' => 'Single Post', 'post' => $post]);
 
