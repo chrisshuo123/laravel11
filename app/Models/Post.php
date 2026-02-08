@@ -2,10 +2,11 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Arr;
 
-class Post {
-    public static function all() {
+class Post extends Model { // lgsg terhubung ke tabel 'posts' scr default.  Misal, mau tabel 'blog_posts', bisa juga tinggal dikasih tahu saja
+    public static function all() { // ini error karena scr default di class Model itu punya juga method yg namanya all(), sehingga ga perlu bikin lagi sebetulnya.  Ini di bagian sebelumnya kita simulasikan kita bikin method sendiri namanya all() yg bertugas untuk mengambil semua data pada array.  Karna seluruh array dibawah sudah tidak dibutuhkan lagi dimana kita sudah ada semuanya pada db sqlite, tinggal dihapus saja.
         return [
             [
                 'id' => 1,
@@ -24,13 +25,7 @@ class Post {
         ];
     }
 
-    public static function find($slug): array { // kasih array spy saat error, lebih spesifik laravel nandai errornya dimana
-        // Yang 'Post::all()', diganti jadi 'static::all()':
-        // return Arr::first(static::all(), function($post) use ($slug) {
-        //     return $post['slug'] == $slug;
-        // });
-
-        // atau bisa pakai ini juga
+    public static function find($slug): array { // Nah yang find sebetulnya juga ada, jadi ini ga perlu Model Post ini, keren banget.  Bisa dihapus juga bagian ini.
         $post = Arr::first(static::all(), fn($post) => $post['slug'] == $slug);
     
         if(!$post) {
