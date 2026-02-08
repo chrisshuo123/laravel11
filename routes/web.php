@@ -13,18 +13,16 @@ Route::get('/about', function () {
     return view('about', ['nama' => 'Chris Shuo', 'title' => 'About Page']);
 });
 
-// Route Blog Posts, sekaligus mempelajari tentang penerapan "Wild Card"
-// Di halaman Blog Utama
-// Pada branch 'part4_model', seluruh array posts dipindah ke dalam class Post dengan method all
 Route::get('/posts', function () {
     return view('posts', ['title' => 'Blog Page', 'posts' => Post::all()]);
 });
 
 // Di hal. Posts, pada hal. Blog kita pilih
-Route::get('posts/{slug}', function($slug) {
-    // Pada branch 'part4_model', param dgn $posts dirubah ke 'Post::all'. Panggil class dan methodnya.  var $post telah dipindah ke dalam Models\Post.php, karna hal2 yg berhubungan dgn ngerubah isi (kyk id jadi slug), harus dilakukan pada model scr prinsip.
-    $post = Post::find($slug);
-
+Route::get('posts/{post}', function(Post $post) { // slug ganti ke posts
+    // Kita tidak lagi perlu pencarian secara manual disini
+    // $post = Post::find($slug);
+    // Laravelnya otomatis tahu bahwa yang diambil adalah post.  Contoh kita tulis angka 1 didalam {post}, Laravel akan langsung cari "ada nda post yang angka id nya 1?"  Kalau ada kirim langsung ke bawah ini yang $post.
+    
     return view('post', ['title' => 'Single Post', 'post' => $post]);
 
     // dd($post);
