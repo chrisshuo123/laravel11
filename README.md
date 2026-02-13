@@ -11,6 +11,26 @@ I've learned to implement component by using the php artisan make:component whet
 **php artisan make:component Layout**<br>
 **php artisan make:component NavLink --view**<br>
 <br>
+### part6_1_eloquent_introduction
+Set the Post Model with 'extends model', and explaining the error part in Post Models using command //.
+
+### part6_2_usingEloquent
+The basic use of eloquent, when there's no any single code used inside the Post Models.
+
+### part6_3_usingEloquent2
+Add some manipulations when the table or id name aren't default to Eloquent.  For instance when table's name is not 'posts' but 'blog_posts', and the id is not 'id' but 'post_id'.  Pada branch ini, slug diganti dengan id agar bisa respon.  Jika mau pakai slug, kita masuk branch part6_4_slugInEloquent.
+
+### part6_4_slugInEloquent
+Eloquent does not support slug, so we use "Route Model Binding" that can be found in the Laravel docs.
+
+### part6_5_eloquentTinker
+Inserting data row using artisan tinker, also part of eloquent ORM where we insert db array in the terminal to the sqlite.  If there's MassAssignmentException (an error in laravel that keeps us from inserting data Mass Assignment into a table db), we can use fillable that can be found in 'Mass Assignment' doc in laravel.
+
+### part6_6_recreateModelWithMigration
+In here we rename the Model Posts and Migration Posts using the "_" on the initial, re-create them using Migration this time (where previously the model we create manually just like in the old PHP)
+
+### part6_7_homeworkAddFiveBlogspots
+After doing the 'php artisan migration:fresh' on a table posts, I'm assigned on a homework creating 5 rows of posts with authenticated title, author, slug (title), and body paragraph.  No lorem ipsums for the paragraph, and it's totally fine to generate blogposts using AI.
 ***
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
