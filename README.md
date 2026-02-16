@@ -30,7 +30,8 @@ Inserting data row using artisan tinker, also part of eloquent ORM where we inse
 In here we rename the Model Posts and Migration Posts using the "_" on the initial, re-create them using Migration this time (where previously the model we create manually just like in the old PHP)
 
 ### part6_7_homeworkAddFiveBlogspots
-After doing the 'php artisan migration:fresh' on a table posts, I'm assigned on a homework creating 5 rows of posts with authenticated title, author, slug (title), and body paragraph.  No lorem ipsums for the paragraph, and it's totally fine to generate blogposts using AI.
+After doing the 'php artisan migration:fresh' on a table posts, I'm assigned on a homework creating 5 rows of posts with authenticated title, author, slug (title), and body paragraph.  No lorem ipsums for the paragraph, and it's totally fine to generate blogposts using AI.<br>
+There's no changes made in the code, but I've specify a .txt file that I've implemented on inserting 5 rows (+2 additional rows) of blogposts using the 'php artisan tinker'.
 ***
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
