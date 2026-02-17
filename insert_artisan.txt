@@ -1,0 +1,136 @@
+=== Inserting query into the Blogpost Table ===
+
+In the VSCode's Terminal, prompt this first:
+'php artisan tinker'
+
+1. After hit enter, it shows an arrow with empty prompt as below:
+">          "
+
+2. In here, write down the single create row by calling the Model's name.  For instance, the model's name is 'Post':
+'> App\Models\Post::create(['
+
+3. Hit enter, then write each columns and the value required using associative array (key => value):
+'. "title => "Finding Clarity in a World of Constant Pings",'
+
+4. Hit enter, write another column required.  Before was the 'title' column, now write the 'author' column:
+'. "author" => "Alex Mercer",'
+
+5. Hit enter, now write another for column 'slug':
+'. "slug" => "finding-clarity-in-a-world-of-constant-pings",'
+
+6. Hit enter, write another for column 'body' (Note: due to its long paragraph, copy & paste the paragraph on it.  If there's a double quote in the value, use the backslash before the double quote \" to make it as string):
+'. "body" => "We often mistake busyness for importance, filling every quiet moment with a scroll or a tap. But true productivity isn't about how quickly we respondit's about how intentionally we act. Last week, I silenced all notifications for just one afternoon and managed to complete a task I'd been avoiding for months. It turns out our attention isn't just a resource; it's the canvas on which we paint our entire day. Protecting it might be the most rebellious act we have left.",'
+
+7. End it with close square array, close parantheses:
+'. ]);'
+
+The whole query result after using php artisan tinker:
+
+App\Models\Post::create({
+. "title" => "Finding Clarity in a World of Constant Pings",
+. "author" => "Alex Mercer",
+. "slug" => "finding-clarity-in-a-world-of-constant-pings",
+. "body" => "We often mistake busyness for importance, filling every quiet moment with a scroll or a tap. But true productivity isn't about how quickly we respondit's about how intentionally we act. Last week, I silenced all notifications for just one afternoon and managed to complete a task I'd been avoiding for months. It turns out our attention isn't just a resource; it's the canvas on which we paint our entire day. Protecting it might be the most rebellious act we have left.",
+});
+
+REFERENCE: Used by Deepseek AI to generate 5 rows of dummy data consists of 4 column which is title, author, slug, and body. 
+
+=== Update the created_at and updated_at column ===
+
+If the created_at and updated_at column was not the last time inserted, proceed in editing the column using DB::facade, to force the column to apply the changes. In VSCode Terminal, proceed on calling the 'php artisan tinker', and write the DB::facade like what's done before, until the whole result goes as below:
+
+> DB::table('posts')->where('id', 5)->update([     // << For example, updating the id = 5
+. 'created_at' => '2025-02-01 07:45:03',
+. 'updated_at' => '2025-02-09 23:31:26',
+]);
+
+== THE WHOLE RESULT ==
+This is the Whole Result after done inserting new columns into blogpost table:
+
+App\Models\Post::create({
+. "title" => "Finding Clarity in a World of Constant Pings",
+. "author" => "Alex Mercer",
+. "slug" => "finding-clarity-in-a-world-of-constant-pings",
+. "body" => "We often mistake busyness for importance, filling every quiet moment with a scroll or a tap. But true productivity isn't about how quickly we respondit's about how intentionally we act. Last week, I silenced all notifications for just one afternoon and managed to complete a task I'd been avoiding for months. It turns out our attention isn't just a resource; it's the canvas on which we paint our entire day. Protecting it might be the most rebellious act we have left.",
+});
+
+App\Models\Post::create({
+. "title" => "What My Grandmother's Recipe Box Taught Me About Legacy",
+. "author" => "James Chen",
+. "slug" => "what-my-grandmother-recipe-box-taught-me-about-legacy",
+. "body" => "My grandmother never wrote down her recipes so much as she wrote around them. 'A pinch,' 'a handful,' 'until it looks right'these were her measurements. When I inherited her recipe box, I expected precise instructions. Instead, I found a philosophy: cooking isn't about control, but about relationship with your ingredients. I've burned more dishes trying to follow modern recipes than I ever did trusting my instincts. Maybe that's what she was trying to preserve, not the dishes themselves, but the confidence to create without a map.",
+});
+
+App\Models\Post::create({
+. "title" => "The Case for Boring Mornings",
+. "author" => "Elena Vasquez",
+. "slug" => "the-case-for-boring-mornings",
+. "body" => "We've been sold a story that mornings should be optimizedfive-mile runs, cold plunges, journaling, and bulletproof coffee before 6 a.m. But I've started reclaiming the unremarkable morning. I sit with my tea and watch the same patch of sunlight move across the kitchen floor. I don't learn anything. I don't produce anything. And yet, on these mornings, I feel more myself than during any of my so-called 'power hours.' Perhaps boredom isn't the enemy of productivity, but the soil in which creativity quietly grows.",
+});
+
+App\Models\Post::create({
+. "title" => "On Letting Plants Die",
+. "author" => "Marcus Wright",
+. "slug" => "on-letting-plants-die",
+. "body" => "I used to feel ashamed every time I killed a houseplant. It felt like proof that I couldn't commit to anything. But my friend, who somehow keeps a fiddle-leaf fig alive in a dim apartment, told me something I didn't expect: she's killed dozens. The difference isn't a green thumb, she saidit's that she kills them faster, learns sooner, and tries again. Now when a succulent turns to mush on my windowsill, I don't see failure. I see tuition paid toward the education of keeping something alive.",
+});
+
+App\Models\Post::create({
+. "title" => "The Lost Art of Reading Things Twice",
+. "author" => "Priya Kapoor",
+. "slug" => "the-lost-art-of-reading-things-twice",
+. "body" => "In school, we read for analysis. In adulthood, we read for survivalskimming emails, headlines, and instructions just to move on to the next task. But last month, I revisited a novel I first read ten years ago and was stunned to find an entirely different book inside it. The words hadn't changed, but I had. Perhaps we don't truly read a book until we've lived enough to understand what it's asking of us.",
+});
+
+Add another 2 rows for my self challenge:
+
+App\Models\Post::create({
+. "title" => "Why I Stopped Trying to 'Fix' My Walk",
+. "author" => "Fatima Al-Sayed",
+. "slug" => "why-i-stopped-trying-to-fix-my-walk",
+. "body" => "For years, fitness apps told me my walks were inefficient. My pace was too slow, my route too meandering, my heart rate not elevated enough. So I walked faster, straighter, with purpose. And I hated every step. Last Sunday, I left my phone at home and walked without agendastopping to watch a heron, taking wrong turns, lingering in the shade. I covered half the distance and felt twice as restored. Not every movement needs to be progress. Some movement is just prayer.",
+});
+
+App\Models\Post::create({
+. "title" => "The Quiet Violence of 'Just Checking In'",
+. "author" => "David Okafor",
+. "slug" => "the-quiet-violence-of-just-checking-in",
+. "body" => "We send the email with good intentions'Just checking in!'but beneath the cheerfulness lurks an implicit demand: justify your silence, account for your time, prove you haven't forgotten me. I've been on both sides of that subject line, and I've come to believe it's a poor substitute for what we really mean. Instead of checking-in, I've started writing 'No need to reply, but I was thinking of you.' It's only a few words, but it releases the other person from the obligation to perform their care. And somehow, they write back more often now.",
+});
+
+And below are the updated results after update the created_at and updated_at column, which is basically designed to display the last updated time since the user made the insert:
+
+DB::table('posts')->where('id', 1)->update([
+    'created_at' => '2025-11-15 09:24:00',
+    'updated_at' => '2025-11-16 14:37:00',
+]);
+
+DB::table('posts')->where('id', 2)->update([
+    'created_at' => '2026-01-18 15:30:00',
+    'updated_at' => '2026-01-20 09:22:00',
+]);
+
+DB::table('posts')->where('id', 3)->update([
+    'created_at' => '2026-02-06 18:33:00',
+    'updated_at' => '2026-02-07 01:46:33',
+]);
+
+DB::table('posts')->where('id', 4)->update([
+    'created_at' => '2026-02-08 13:20:00',
+    'updated_at' => '2026-02-10 10:55:00',
+]);
+
+DB::table('posts')->where('id', 5)->update([
+    'created_at' => '2025-12-03 11:12:00',
+    'updated_at' => '2025-12-05 08:45:00',
+]);
+
+DB::table('posts')->where('id', 6)->update([
+    'created_at' => '2026-02-14 10:08:00',
+    'updated_at' => '2026-02-14 16:42:00',
+]);
+
+DB::table('posts')->where('id', 7)->update([
+    'created_at' => '2026-02-16 12:15:00',
+    'updated_at' => '2026-02-17 09:30:00',
+]);
