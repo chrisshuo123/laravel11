@@ -23,10 +23,10 @@
                 <div class="hidden sm:ml-6 sm:block">
                     <div class="flex space-x-4">
                         <!-- Current: "bg-gray-900 dark:bg-gray-950/50 text-white", Default: "text-gray-300 hover:bg-white/5 hover:text-white" -->
-                        <a href="/" aria-current="page" class="bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium dark:bg-gray-950/50">Home</a>
-                        <a href="blog" class="text-gray-300 hover:text-white rounded-md px-3 py-2 text-sm font-medium hover:bg-white/5 ">Blog</a>
-                        <a href="about" class="text-gray-300 hover:text-white rounded-md px-3 py-2 text-sm font-medium hover:bg-white/5">About</a>
-                        <a href="contact" class="text-gray-300 hover:text-white rounded-md px-3 py-2 text-sm font-medium hover:bg-white/5">Contact</a>
+                        <a href="/" aria-current="page" class="{{ request()->is('/') ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-white/5 hover:text-white' }} rounded-md px-3 py-2 text-sm font-medium dark:bg-gray-950/50">Home</a>
+                        <a href="blog" class="{{ request()->is('blog') ? 'bg-gray-900 text-white' : 'text-gray-300 hover:text-white hover:bg-white/5' }} rounded-md px-3 py-2 text-sm font-medium ">Blog</a>
+                        <a href="about" class="{{ request()->is('about') ? 'bg-gray-900 dark:bg-gray-950/50 text-white' : 'text-gray-300 hover:text-white hover:bg-white/5' }} rounded-md px-3 py-2 text-sm font-medium ">About</a>
+                        <a href="contact" class="{{ request()->is('contact') ? 'bg-gray-900 text-white' : 'text-gray-300 hover:text-white hover:bg-white/5' }} rounded-md px-3 py-2 text-sm font-medium ">Contact</a>
                     </div>
                 </div>
             </div>
