@@ -19,13 +19,13 @@
             <img src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=500" alt="Your Company" class="h-8 w-auto" />
             </div>
             <div class="hidden sm:ml-6 sm:block">
-            <div class="flex space-x-4">
-                <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-white/5 hover:text-white" -->
-                <x-nav-link href="/" :active="request()->is('/')">Home</x-nav-link>
-                <x-nav-link href="blog" :active="request()->is('blog')">Blog</x-nav-link>
-                <x-nav-link href="about" :active="request()->is('about')">About</x-nav-link>
-                <x-nav-link href="contact" :active="request()->is('contact')">Contact</x-nav-link>
-            </div>
+                <div class="flex space-x-4">
+                    <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-white/5 hover:text-white" -->
+                    <x-nav-link href="/" :active="request()->is('/')">Home</x-nav-link>
+                    <x-nav-link href="blog" :active="request()->is('blog')">Blog</x-nav-link>
+                    <x-nav-link href="about" :active="request()->is('about')">About</x-nav-link>
+                    <x-nav-link href="contact" :active="request()->is('contact')">Contact</x-nav-link>
+                </div>
             </div>
         </div>
         <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
