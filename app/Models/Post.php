@@ -2,11 +2,14 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Arr;
 
 // 1. Set protected fillable untuk menyertakan column mana saja yang boleh diisi.  Kalau fillable tidak diisi, maka bisa terkena error MassAssignmentException.  Untuk detailnya, bisa dilihat pada docs laravel 'Mass Assignment'
 class Post extends Model {
+    use HasFactory;
+
     protected $fillable = ['title', 'author', 'slug', 'body'];
 }
 
